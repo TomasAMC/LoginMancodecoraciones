@@ -16,7 +16,8 @@ async function obtenerUsuarios(){
   const peticion = await fetch('http://localhost:3000/usuarios',{credentials:'include'})
   if (peticion.ok){
     const respuesta  = await peticion.json()
-    setUsuarios(respuesta)
+    const usuariosFiltrados = respuesta.filter(usuario=> usuario.id != null );
+    setUsuarios(usuariosFiltrados)
   }
 }
 
